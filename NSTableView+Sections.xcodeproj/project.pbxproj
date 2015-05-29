@@ -12,7 +12,6 @@
 		75DF38FA1B183E76006C7C5D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75DF38F91B183E76006C7C5D /* Images.xcassets */; };
 		75DF38FD1B183E76006C7C5D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75DF38FB1B183E76006C7C5D /* Main.storyboard */; };
 		75DF39091B183E76006C7C5D /* NSTableView_SectionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DF39081B183E76006C7C5D /* NSTableView_SectionsTests.swift */; };
-		75DF39131B183F1F006C7C5D /* NSTableViewSectionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DF39121B183F1F006C7C5D /* NSTableViewSectionDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,7 +34,6 @@
 		75DF39021B183E76006C7C5D /* NSTableView+SectionsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "NSTableView+SectionsTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		75DF39071B183E76006C7C5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		75DF39081B183E76006C7C5D /* NSTableView_SectionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSTableView_SectionsTests.swift; sourceTree = "<group>"; };
-		75DF39121B183F1F006C7C5D /* NSTableViewSectionDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSTableViewSectionDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,7 +80,6 @@
 				75DF38F91B183E76006C7C5D /* Images.xcassets */,
 				75DF38FB1B183E76006C7C5D /* Main.storyboard */,
 				75DF38F31B183E76006C7C5D /* Supporting Files */,
-				75DF39121B183F1F006C7C5D /* NSTableViewSectionDataSource.swift */,
 			);
 			path = "NSTableView+Sections";
 			sourceTree = "<group>";
@@ -213,7 +210,6 @@
 			files = (
 				75DF38F81B183E76006C7C5D /* ViewController.swift in Sources */,
 				75DF38F61B183E76006C7C5D /* AppDelegate.swift in Sources */,
-				75DF39131B183F1F006C7C5D /* NSTableViewSectionDataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

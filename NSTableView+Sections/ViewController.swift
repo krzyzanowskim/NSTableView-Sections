@@ -14,6 +14,19 @@ class ViewController: NSViewController, NSTableViewDelegate {
         case People = 0
         case Group
         case Total
+        
+        var name:String {
+            switch (self) {
+            case .People:
+                return "PEOPLE"
+            case Group:
+                return "GROUP"
+            default:
+                assertionFailure("Invalid section name")
+                break
+            }
+            return ""
+        }
     }
     
     @IBOutlet var tableView: NSTableView!
@@ -31,7 +44,6 @@ class ViewController: NSViewController, NSTableViewDelegate {
 
     override var representedObject: AnyObject? {
         didSet {
-        // Update the view, if already loaded.
         }
     }
     
@@ -40,25 +52,35 @@ class ViewController: NSViewController, NSTableViewDelegate {
     func tableView(tableView: NSTableView, viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
         
         let cellView = tableView.makeViewWithIdentifier("CellView", owner: self) as! NSTableCellView
-        let (section, sectionRow) = self.tableView(tableView, sectionForRow: row)
-        switch (section) {
-        case Section.People.rawValue:
-            cellView.textField?.stringValue = people![sectionRow]
-            break
-        case Section.Group.rawValue:
-            cellView.textField?.stringValue = groups![sectionRow]
-            break
-        default:
-            break
+        if let value = self.tableView(tableView, objectValueForTableColumn: tableColumn, row: row) as? String {
+            cellView.textField?.stringValue = value
         }
-        
         return cellView
     }
 }
 
 //MARK: - NSTableViewSectionDataSource
 
+protocol NSTableViewSectionDataSource: NSTableViewDataSource {
+    func numberOfSectionsInTableView(tableView: NSTableView) -> Int
+    func tableView(tableView: NSTableView, numberOfRowsInSection section: Int) -> Int
+    func tableView(tableView: NSTableView, sectionForRow row: Int) -> (section: Int, row: Int)
+}
+
 extension ViewController: NSTableViewSectionDataSource {
+    
+    // Optional
+    func tableView(tableView: NSTableView, objectValueForTableColumn tableColumn: NSTableColumn?, row: Int) -> AnyObject? {
+        let (section, sectionRow) = self.tableView(tableView, sectionForRow: row)
+            switch (section) {
+            case Section.People.rawValue:
+                return people![sectionRow]
+            case Section.Group.rawValue:
+                return groups![sectionRow]
+            default:
+                return 0
+            }
+    }
     
     func numberOfRowsInTableView(tableView: NSTableView) -> Int {
         var total = 0
