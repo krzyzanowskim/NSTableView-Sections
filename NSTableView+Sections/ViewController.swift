@@ -30,15 +30,11 @@ class ViewController: NSViewController, NSTableViewDelegate {
     }
     
     @IBOutlet var tableView: NSTableView!
-    private var people:[String]?
-    private var groups:[String]?
+    private let people:[String] = ["Frakn","Monica","Natalie","Alice"]
+    private let groups:[String] = ["Engineers","Teachers","Bookkeepers"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        people = ["Frakn","Monica","Natalie","Alice"]
-        groups = ["Engineers","Teachers","Bookkeepers"]
-
         tableView.reloadData()
     }
 
@@ -52,10 +48,32 @@ class ViewController: NSViewController, NSTableViewDelegate {
     func tableView(tableView: NSTableView, viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
         
         let cellView = tableView.makeViewWithIdentifier("CellView", owner: self) as! NSTableCellView
-        if let value = self.tableView(tableView, objectValueForTableColumn: tableColumn, row: row) as? String {
+        if let value = tableView.dataSource()?.tableView?(tableView, objectValueForTableColumn: tableColumn, row: row) as? String {
             cellView.textField?.stringValue = value
         }
         return cellView
+    }
+}
+
+//MARK: - NSTableViewSectionDelegate
+
+protocol NSTableViewSectionDelegate: NSTableViewDelegate {
+    func tableView(tableView: NSTableView, viewForHeaderInSection section: Int) -> NSTableCellView?
+}
+
+extension ViewController: NSTableViewSectionDelegate {
+    func tableView(tableView: NSTableView, viewForHeaderInSection section: Int) -> NSTableCellView? {
+        switch (section) {
+        case Section.People.rawValue:
+            let sectionView = tableView.makeViewWithIdentifier("SectionView", owner: self) as! NSTableCellView
+            return sectionView
+        case Section.Group.rawValue:
+            let sectionView = tableView.makeViewWithIdentifier("SectionView", owner: self) as! NSTableCellView
+            return sectionView
+        default:
+            break
+        }
+        return nil
     }
 }
 
@@ -71,22 +89,29 @@ extension ViewController: NSTableViewSectionDataSource {
     
     // Optional
     func tableView(tableView: NSTableView, objectValueForTableColumn tableColumn: NSTableColumn?, row: Int) -> AnyObject? {
-        let (section, sectionRow) = self.tableView(tableView, sectionForRow: row)
-            switch (section) {
-            case Section.People.rawValue:
-                return people![sectionRow]
-            case Section.Group.rawValue:
-                return groups![sectionRow]
-            default:
-                return 0
-            }
+        if let dataSource = tableView.dataSource() as? NSTableViewSectionDataSource {
+            let (section, sectionRow) = dataSource.tableView(tableView, sectionForRow: row)
+                switch (section) {
+                case Section.People.rawValue:
+                    return people[sectionRow]
+                case Section.Group.rawValue:
+                    return groups[sectionRow]
+                default:
+                    return 0
+                }
+        }
+        return nil
     }
     
     func numberOfRowsInTableView(tableView: NSTableView) -> Int {
         var total = 0
-        for section in 0..<self.numberOfSectionsInTableView(tableView) {
-            total += self.tableView(tableView, numberOfRowsInSection: section)
+        
+        if let dataSource = tableView.dataSource() as? NSTableViewSectionDataSource {
+            for section in 0..<dataSource.numberOfSectionsInTableView(tableView) {
+                total += dataSource.tableView(tableView, numberOfRowsInSection: section)
+            }
         }
+        
         return total
     }
     
@@ -97,24 +122,29 @@ extension ViewController: NSTableViewSectionDataSource {
     func tableView(tableView: NSTableView, numberOfRowsInSection section: Int) -> Int {
         switch (section) {
         case Section.People.rawValue:
-            return people?.count ?? 0
+            return people.count
         case Section.Group.rawValue:
-            return groups?.count ?? 0
+            return groups.count
         default:
             return 0
         }
     }
 
     func tableView(tableView: NSTableView, sectionForRow row: Int) -> (section: Int, row: Int) {
-        let numberOfSections = self.numberOfSectionsInTableView(tableView)
-        var counts = [Int](count: numberOfSections, repeatedValue: 0)
-        
-        for section in 0..<numberOfSections {
-            counts[section] = self.tableView(tableView, numberOfRowsInSection: section)
+        if let dataSource = tableView.dataSource() as? NSTableViewSectionDataSource {
+            let numberOfSections = dataSource.numberOfSectionsInTableView(tableView)
+            var counts = [Int](count: numberOfSections, repeatedValue: 0)
+            
+            for section in 0..<numberOfSections {
+                counts[section] = dataSource.tableView(tableView, numberOfRowsInSection: section)
+            }
+            
+            let result = self.sectionForRow(row, counts: counts)
+            return (section: result.section ?? 0, row: result.row ?? 0)
         }
         
-        let result = self.sectionForRow(row, counts: counts)
-        return (section: result.section ?? 0, row: result.row ?? 0)
+        assertionFailure("Invalid datasource")
+        return (section: 0, row: 0)
     }
     
     private func sectionForRow(row: Int, counts: [Int]) -> (section: Int?, row: Int?) {
