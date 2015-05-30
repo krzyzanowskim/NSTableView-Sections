@@ -46,12 +46,36 @@ class ViewController: NSViewController, NSTableViewDelegate {
     //MARK: - NSTableViewDelegate
 
     func tableView(tableView: NSTableView, viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        
         let cellView = tableView.makeViewWithIdentifier("CellView", owner: self) as! NSTableCellView
+        
+        if let dataSource = tableView.dataSource() as? NSTableViewSectionDataSource {
+            let (section, sectionRow) = dataSource.tableView(tableView, sectionForRow: row)
+
+            if let headerView = self.tableView(tableView, viewForHeaderInSection: section) as? NSTableCellView where sectionRow == 0 {
+                if let value = tableView.dataSource()?.tableView?(tableView, objectValueForTableColumn: tableColumn, row: row) as? String {
+                    headerView.textField?.stringValue = value
+                }
+                return headerView
+            }
+        }
+
         if let value = tableView.dataSource()?.tableView?(tableView, objectValueForTableColumn: tableColumn, row: row) as? String {
             cellView.textField?.stringValue = value
         }
         return cellView
+    }
+    
+    func tableView(tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
+        if let dataSource = tableView.dataSource() as? NSTableViewSectionDataSource {
+            let (section, sectionRow) = dataSource.tableView(tableView, sectionForRow: row)
+
+            if sectionRow == 0 {
+                return false
+            }
+            
+            return true
+        }
+        return false
     }
 }
 
@@ -94,12 +118,11 @@ extension ViewController: NSTableViewSectionDataSource {
             
             if let headerView = self.tableView(tableView, viewForHeaderInSection: section) {
                 if sectionRow == 0 {
-                    return headerView
+                    return Section(rawValue: section)?.name
                 } else {
                     sectionRow -= 1
                 }
             }
-            
             
             switch (section) {
             case Section.People.rawValue:
@@ -126,7 +149,7 @@ extension ViewController: NSTableViewSectionDataSource {
     }
     
     func numberOfSectionsInTableView(tableView: NSTableView) -> Int {
-        return Section.Total.rawValue
+        return Section.Total.rawValue // 2
     }
     
     func tableView(tableView: NSTableView, numberOfRowsInSection section: Int) -> Int {

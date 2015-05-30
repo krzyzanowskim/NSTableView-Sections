@@ -400,6 +400,7 @@
 				75DF390E1B183E76006C7C5D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		75DF390F1B183E76006C7C5D /* Build configuration list for PBXNativeTarget "NSTableView+SectionsTests" */ = {
 			isa = XCConfigurationList;
@@ -408,6 +409,7 @@
 				75DF39111B183E76006C7C5D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
