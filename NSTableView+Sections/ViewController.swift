@@ -183,8 +183,6 @@ extension ViewController: NSTableViewSectionDataSource {
     }
     
     private func sectionForRow(row: Int, counts: [Int]) -> (section: Int?, row: Int?) {
-//        let total = counts.reduce(0, +)
-
         var c = counts[0]
         for section in 0..<counts.count {
             if (section > 0) {
@@ -194,7 +192,6 @@ extension ViewController: NSTableViewSectionDataSource {
                 return (section: section, row: row - (c - counts[section]))
             }
         }
-        
         return (section: nil, row: nil)
     }
 }
