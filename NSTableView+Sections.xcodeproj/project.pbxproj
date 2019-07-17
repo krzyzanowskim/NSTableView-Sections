@@ -52,9 +52,7 @@
 		75DF38F21B183E76006C7C5D /* NSTableView+Sections */ = {
 			isa = PBXGroup;
 			children = (
-				75DF38F51B183E76006C7C5D /* AppDelegate.swift */,
 				75DF38F71B183E76006C7C5D /* ViewController.swift */,
-				75DF38F91B183E76006C7C5D /* Images.xcassets */,
 				75DF38FB1B183E76006C7C5D /* Main.storyboard */,
 				75DF38F31B183E76006C7C5D /* Supporting Files */,
 			);
@@ -64,6 +62,8 @@
 		75DF38F31B183E76006C7C5D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				75DF38F51B183E76006C7C5D /* AppDelegate.swift */,
+				75DF38F91B183E76006C7C5D /* Images.xcassets */,
 				75DF38F41B183E76006C7C5D /* Info.plist */,
 			);
 			name = "Supporting Files";
