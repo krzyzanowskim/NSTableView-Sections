@@ -10,22 +10,17 @@ import Cocoa
 
 class ViewController: NSViewController, NSTableViewDelegate {
     
-    enum Section: Int {
-        case People = 0
-        case Group
-        case Total
-        
+    enum Section: Int, CaseIterable {
+        case people = 0
+        case group
+
         var name:String {
-            switch (self) {
-            case .People:
+            switch self {
+            case .people:
                 return "PEOPLE"
-            case .Group:
+            case .group:
                 return "GROUP"
-            default:
-                assertionFailure("Invalid section name")
-                break
             }
-            return ""
         }
     }
     
@@ -83,10 +78,7 @@ protocol NSTableViewSectionDelegate: NSTableViewDelegate {
 extension ViewController: NSTableViewSectionDelegate {
     func tableView(tableView: NSTableView, viewForHeaderInSection section: Int) -> NSView? {
         switch (section) {
-        case Section.People.rawValue:
-            let sectionView = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "SectionView"), owner: self) as! NSTableCellView
-            return sectionView
-        case Section.Group.rawValue:
+        case Section.people.rawValue, Section.group.rawValue:
             let sectionView = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "SectionView"), owner: self) as! NSTableCellView
             return sectionView
         default:
@@ -119,9 +111,9 @@ extension ViewController: NSTableViewSectionDataSource {
             }
             
             switch (section) {
-            case Section.People.rawValue:
+            case Section.people.rawValue:
                 return people[sectionRow] as AnyObject
-            case Section.Group.rawValue:
+            case Section.group.rawValue:
                 return groups[sectionRow] as AnyObject
             default:
                 return 0 as AnyObject
@@ -143,7 +135,7 @@ extension ViewController: NSTableViewSectionDataSource {
     }
     
     func numberOfSectionsInTableView(tableView: NSTableView) -> Int {
-        return Section.Total.rawValue // 2
+        return Section.allCases.count
     }
     
     func tableView(tableView: NSTableView, numberOfRowsInSection section: Int) -> Int {
@@ -154,9 +146,9 @@ extension ViewController: NSTableViewSectionDataSource {
         }
         
         switch (section) {
-        case Section.People.rawValue:
+        case Section.people.rawValue:
             count += people.count
-        case Section.Group.rawValue:
+        case Section.group.rawValue:
             count += groups.count
         default:
             return 0
@@ -177,7 +169,7 @@ extension ViewController: NSTableViewSectionDataSource {
             let result = self.sectionForRow(row: row, counts: counts)
             return (section: result.section ?? 0, row: result.row ?? 0)
         }
-        
+
         assertionFailure("Invalid datasource")
         return (section: 0, row: 0)
     }
