@@ -11,18 +11,7 @@
 		75DF38F81B183E76006C7C5D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DF38F71B183E76006C7C5D /* ViewController.swift */; };
 		75DF38FA1B183E76006C7C5D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75DF38F91B183E76006C7C5D /* Images.xcassets */; };
 		75DF38FD1B183E76006C7C5D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75DF38FB1B183E76006C7C5D /* Main.storyboard */; };
-		75DF39091B183E76006C7C5D /* NSTableView_SectionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DF39081B183E76006C7C5D /* NSTableView_SectionsTests.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		75DF39031B183E76006C7C5D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 75DF38E81B183E75006C7C5D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 75DF38EF1B183E75006C7C5D;
-			remoteInfo = "NSTableView+Sections";
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		75DF38F01B183E76006C7C5D /* NSTableView+Sections.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NSTableView+Sections.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -31,20 +20,10 @@
 		75DF38F71B183E76006C7C5D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		75DF38F91B183E76006C7C5D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		75DF38FC1B183E76006C7C5D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		75DF39021B183E76006C7C5D /* NSTableView+SectionsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "NSTableView+SectionsTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		75DF39071B183E76006C7C5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		75DF39081B183E76006C7C5D /* NSTableView_SectionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSTableView_SectionsTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		75DF38ED1B183E75006C7C5D /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		75DF38FF1B183E76006C7C5D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -58,7 +37,6 @@
 			isa = PBXGroup;
 			children = (
 				75DF38F21B183E76006C7C5D /* NSTableView+Sections */,
-				75DF39051B183E76006C7C5D /* NSTableView+SectionsTests */,
 				75DF38F11B183E76006C7C5D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -67,7 +45,6 @@
 			isa = PBXGroup;
 			children = (
 				75DF38F01B183E76006C7C5D /* NSTableView+Sections.app */,
-				75DF39021B183E76006C7C5D /* NSTableView+SectionsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -92,23 +69,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		75DF39051B183E76006C7C5D /* NSTableView+SectionsTests */ = {
-			isa = PBXGroup;
-			children = (
-				75DF39081B183E76006C7C5D /* NSTableView_SectionsTests.swift */,
-				75DF39061B183E76006C7C5D /* Supporting Files */,
-			);
-			path = "NSTableView+SectionsTests";
-			sourceTree = "<group>";
-		};
-		75DF39061B183E76006C7C5D /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				75DF39071B183E76006C7C5D /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -129,24 +89,6 @@
 			productReference = 75DF38F01B183E76006C7C5D /* NSTableView+Sections.app */;
 			productType = "com.apple.product-type.application";
 		};
-		75DF39011B183E76006C7C5D /* NSTableView+SectionsTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 75DF390F1B183E76006C7C5D /* Build configuration list for PBXNativeTarget "NSTableView+SectionsTests" */;
-			buildPhases = (
-				75DF38FE1B183E76006C7C5D /* Sources */,
-				75DF38FF1B183E76006C7C5D /* Frameworks */,
-				75DF39001B183E76006C7C5D /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				75DF39041B183E76006C7C5D /* PBXTargetDependency */,
-			);
-			name = "NSTableView+SectionsTests";
-			productName = "NSTableView+SectionsTests";
-			productReference = 75DF39021B183E76006C7C5D /* NSTableView+SectionsTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -158,10 +100,6 @@
 				TargetAttributes = {
 					75DF38EF1B183E75006C7C5D = {
 						CreatedOnToolsVersion = 6.3.2;
-					};
-					75DF39011B183E76006C7C5D = {
-						CreatedOnToolsVersion = 6.3.2;
-						TestTargetID = 75DF38EF1B183E75006C7C5D;
 					};
 				};
 			};
@@ -180,7 +118,6 @@
 			projectRoot = "";
 			targets = (
 				75DF38EF1B183E75006C7C5D /* NSTableView+Sections */,
-				75DF39011B183E76006C7C5D /* NSTableView+SectionsTests */,
 			);
 		};
 /* End PBXProject section */
@@ -192,13 +129,6 @@
 			files = (
 				75DF38FA1B183E76006C7C5D /* Images.xcassets in Resources */,
 				75DF38FD1B183E76006C7C5D /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		75DF39001B183E76006C7C5D /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -214,23 +144,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		75DF38FE1B183E76006C7C5D /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				75DF39091B183E76006C7C5D /* NSTableView_SectionsTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		75DF39041B183E76006C7C5D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 75DF38EF1B183E75006C7C5D /* NSTableView+Sections */;
-			targetProxy = 75DF39031B183E76006C7C5D /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		75DF38FB1B183E76006C7C5D /* Main.storyboard */ = {
@@ -350,42 +264,6 @@
 			};
 			name = Release;
 		};
-		75DF39101B183E76006C7C5D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "NSTableView+SectionsTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NSTableView+Sections.app/Contents/MacOS/NSTableView+Sections";
-			};
-			name = Debug;
-		};
-		75DF39111B183E76006C7C5D /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "NSTableView+SectionsTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NSTableView+Sections.app/Contents/MacOS/NSTableView+Sections";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -403,15 +281,6 @@
 			buildConfigurations = (
 				75DF390D1B183E76006C7C5D /* Debug */,
 				75DF390E1B183E76006C7C5D /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		75DF390F1B183E76006C7C5D /* Build configuration list for PBXNativeTarget "NSTableView+SectionsTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				75DF39101B183E76006C7C5D /* Debug */,
-				75DF39111B183E76006C7C5D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
